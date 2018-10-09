@@ -1,0 +1,11 @@
+[Unit]
+Description=PMC data proxy from MQTT to SAAM
+
+[Service]
+Environment=PYTHONUNBUFFERED=true
+ExecStart=/home/administrator/pmc-mqtt-saam-proxy/proxy.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

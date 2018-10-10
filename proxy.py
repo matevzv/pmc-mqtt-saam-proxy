@@ -8,6 +8,7 @@ pmcs = [("pmc/16700204541000610066a000a00000c1",0)]
 
 url_pub = "localhost"
 mqtts = mqtt.Client()
+mqtts.username_pw_set("user", "pass")
 mqtts.connect(url_pub)
 
 saam_msg = {}

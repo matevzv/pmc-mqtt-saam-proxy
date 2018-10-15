@@ -34,8 +34,6 @@ def on_message(mqttc, userdata, msg):
             mqtts.publish("saam_data/"+sid+"/"+field, json.dumps(saam_msg[field]))
         saam_msg = {}
         counters[node_id] = 0
-    else:
-        counters[node_id] = counters[node_id] + 1
 
     saam_id = node_id
     ts = data["ts"]
@@ -53,6 +51,8 @@ def on_message(mqttc, userdata, msg):
         if source_id not in saam_msg:
             saam_msg[source_id] = {"timestamp": ts, "period": 500, "measurements": []}
         saam_msg[source_id]["measurements"].append(float(data[field]))
+
+    counters[node_id] = counters[node_id] + 1
 
 mqttc = mqtt.Client()
 mqttc.on_connect = on_connect

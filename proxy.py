@@ -3,8 +3,11 @@
 import json
 import paho.mqtt.client as mqtt
 
-url_sub = "193.2.205.66"
-pmcs = [("pmc/16700204541000610066a000a00000c1",0)]
+url_sub = "localhost"
+pmcs = [("pmc/16700204541000610066a000a00000c1",0), 
+        "pmc/1670020454100061004aa000a0000005",0),
+        "pmc/16700204541000610088a000a0000045",0),
+        "pmc/16700204541000610080a000a000007d",0),]
 
 url_pub = "localhost"
 mqtts = mqtt.Client()
@@ -13,7 +16,11 @@ mqtts.connect(url_pub)
 mqtts.loop_start()
 
 saam_msg = {}
-counters = {"16700204541000610066a000a00000c1": 0}
+counters = {"16700204541000610066a000a00000c1": 0,
+            "1670020454100061004aa000a0000005": 0,
+            "16700204541000610088a000a0000045": 0,
+            "16700204541000610080a000a000007d": 0,
+            }
 
 def on_connect(mqttc, userdata, flags, rc):
     global pmcs

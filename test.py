@@ -43,8 +43,8 @@ while True:
             print(json.dumps(saam_msg[field]))
         saam_msg = {}
         counters[node_id] = 0
-    else:
-        counters[node_id] = counters[node_id] + 1
+    
+    counters[node_id] = counters[node_id] + 1
 
     #print(json.dumps(saam_msg))
     time.sleep(0.5)

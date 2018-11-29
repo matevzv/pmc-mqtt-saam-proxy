@@ -19,8 +19,7 @@ saam_msg = {}
 counters = {"16700204541000610066a000a00000c1": 0,
             "1670020454100061004aa000a0000005": 0,
             "16700204541000610088a000a0000045": 0,
-            "16700204541000610080a000a000007d": 0
-            }
+            "16700204541000610080a000a000007d": 0}
 
 def on_connect(mqttc, userdata, flags, rc):
     global pmcs
@@ -39,7 +38,7 @@ def on_message(mqttc, userdata, msg):
         del saam_msg["node_id"]
         
         for field in saam_msg:
-            mqtts.publish("saam_data/"+sid+"/"+field, json.dumps(saam_msg[field]))
+            mqtts.publish("saam/"+sid+"/"+field, json.dumps(saam_msg[field]))
         saam_msg = {}
         counters[node_id] = 0
 
